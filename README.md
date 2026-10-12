@@ -1,36 +1,95 @@
 # OrbitalMesh
 
-OrbitalMesh is a research-inspired Space-Air-Ground Integrated Network simulator built with React, TypeScript, Vite, Tailwind CSS, React Three Fiber, Three.js, and Recharts-style telemetry sparklines.
+**OrbitalMesh** is an interactive research prototype for exploring routing, resilience, telemetry, and edge-intelligence concepts in simulated **Space-Air-Ground Integrated Networks**.
 
-## Research Scope and Limitations
+The project combines a real-time 3D network visualization with a simulation engine that models satellites, high-altitude platforms, UAV relays, ground stations, sensor clusters, routing paths, failures, recovery behavior, telemetry, and experiment results.
 
-OrbitalMesh is an educational research demonstrator, not an orbital mechanics, RF propagation, spectrum planning, or flight-validation tool. It is designed to explain Space-Air-Ground Integrated Network concepts through interactive topology, telemetry, handoff, routing, and resilience scenarios.
+> OrbitalMesh is a research-inspired demonstrator. It is not a validated orbital mechanics, RF propagation, or satellite-performance simulator.
 
-Actually implemented computations:
+---
 
-- Dijkstra shortest-path routing
-- Route-cost calculation from latency, packet-loss weight, congestion weight, and availability penalty
-- Node-to-node distance estimates from the 3D scene coordinates
-- Link range and visibility eligibility checks
-- Active route selection and next-hop assignment
-- Ground-station handoff selection by link quality
-- Recovery route calculation after satellite, UAV, and ground-station failures
-- CSV export for telemetry, events, failures, and handoffs
+## Overview
 
-Simulated values:
+OrbitalMesh was built to explore how a multi-layer communication network might behave when:
 
-- Battery state
-- Temperature
-- Signal noise and signal quality variation
-- Packet queue pressure
-- Packet-loss variation
-- Congestion pressure
-- Equipment health state
-- Simulated edge anomaly detector score
-- Recovery timing
+- satellite or relay nodes fail
+- routes need to be recomputed
+- network conditions degrade
+- ground-station handoffs occur
+- telemetry becomes abnormal
+- congestion affects routing decisions
+- multiple network layers need to cooperate
 
-The edge anomaly detector is a transparent telemetry-rule simulation. It is not a trained machine-learning model and should not be interpreted as real AI inference. The score is generated from temperature deviation, battery drain, packet-loss spike, and signal-noise contributors.
+The application separates **computed network behavior** from **simulated telemetry values** so that the scope of the prototype remains clear.
 
-Earth rendering is a performant visual approximation using generated texture layers for surface color, night-side city lights, clouds, atmosphere, and an optional latitude/longitude grid. Ground stations and environmental sensor clusters use real latitude/longitude coordinates, but the scene is scaled for visualization rather than scientific orbital or geodetic accuracy.
+---
 
-No scientific validation is claimed. The simulator is intended for university-style demonstrations, classroom discussion, architecture prototyping, and explanation of resilience concepts in constrained multi-layer networks.
+## Network Architecture
+
+OrbitalMesh represents three communication layers:
+
+### Space
+
+- Low Earth Orbit satellites
+- satellite-to-satellite communication links
+- satellite-to-ground links
+- satellite-to-HAPS links
+
+### Air
+
+- High Altitude Platform Stations (HAPS)
+- UAV relay nodes
+- air-to-ground communication links
+
+### Ground
+
+- ground stations
+- environmental sensor clusters
+- command and monitoring endpoints
+
+Together, these nodes form a simulated Space-Air-Ground communication mesh.
+
+---
+
+## Key Features
+
+### Interactive 3D Network
+
+The main interface includes:
+
+- 3D Earth visualization
+- moving LEO satellites
+- UAV and HAPS relay layers
+- ground stations
+- network links
+- active routing paths
+- selected-node highlighting
+- research labels
+- touch and mouse interaction
+
+Users can rotate the Earth, zoom, select nodes, and inspect links.
+
+---
+
+### Network Routing
+
+OrbitalMesh uses **Dijkstra's algorithm** to calculate network routes.
+
+Route cost is influenced by:
+
+- latency
+- packet loss
+- congestion
+- availability
+
+Users can adjust routing weights and observe how the selected path changes.
+
+Example:
+
+```text
+routeCost =
+latency
++ packetLossPenalty
++ congestionPenalty
++ availabilityPenalty
+```
