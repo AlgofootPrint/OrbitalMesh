@@ -2,6 +2,9 @@
 
 **OrbitalMesh** is an interactive research prototype for exploring routing, resilience, telemetry, and edge-intelligence concepts in simulated **Space-Air-Ground Integrated Networks**.
 
+**Live Demo:** https://orbitalmesh.vercel.app  
+**Source Code:** https://github.com/Algofootprint/orbitalmesh
+
 It combines a real-time 3D network visualization with a simulation engine that models satellites, high-altitude platforms, UAV relays, ground stations, sensor clusters, routing paths, failures, recovery behavior, telemetry, and experiment results.
 
 > OrbitalMesh is a research-inspired demonstrator. It is not a validated orbital mechanics, RF propagation, or satellite-performance simulator.
