@@ -1,0 +1,11 @@
+node_modules/
+dist/
+tmp-screens/
+.anti-slop/
+
+*.tsbuildinfo
+*.log
+
+.env
+.env.*
+!.env.example
