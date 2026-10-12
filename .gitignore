@@ -9,3 +9,5 @@ tmp-screens/
 .env
 .env.*
 !.env.example
+
+.vercel
